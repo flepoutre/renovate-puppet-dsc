@@ -1,1 +1,19 @@
-{}
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>guildes/pipeline/renovatebot/renovate-config"
+  ],
+  
+  "enabledManagers": ["puppet"],
+
+  "branchPrefix": "renovate_",
+
+  "branchTopic": "{{{depNameSanitized}}}_{{{newMajor}}}{{#if separateMinorPatch}}{{#if isPatch}}_{{{newMinor}}}{{/if}}{{/if}}_x{{#if isLockfileUpdate}}_lockfile{{/if}}",
+
+  "packageRules": [
+    {
+      "matchManagers": ["puppet"],
+      "addLabels": ["{{{depNameSanitized}}}"]
+    }
+  ]
+}
